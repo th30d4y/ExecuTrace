@@ -45,7 +45,7 @@ ExecuTrace is a Python library and CLI tool that captures developer workflows an
 ### From PyPI (Global Library)
 ```bash
 # Install globally from PyPI
-pip install exectrace
+pip install exectrace-workflow
 
 # Verify installation
 exectrace --help
