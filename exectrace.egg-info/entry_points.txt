@@ -1,0 +1,2 @@
+[console_scripts]
+exectrace = exectrace.cli:main

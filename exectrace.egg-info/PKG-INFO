@@ -1,0 +1,101 @@
+Metadata-Version: 2.4
+Name: exectrace
+Version: 0.1.0
+Summary: Record and replay developer workflows including terminal commands and file system changes
+Author: ExecuTrace Contributors
+License: MIT
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+
+# ExecuTrace
+
+ExecuTrace is a Python library and CLI that records and replays developer workflows.
+
+It captures:
+- Terminal commands (best-effort from shell history)
+- File system changes (create, modify, delete)
+- Timestamps for every recorded action
+
+Workflows are stored as JSON for easy editing and inspection.
+
+## Features
+
+### Core
+- Record workflow sessions
+- Track file system changes
+- Save workflows in JSON
+- Replay workflows step-by-step
+
+### Advanced
+- Smart replay (`--smart`) to skip already executed steps
+- Dry-run mode (`--dry-run`) to simulate without execution
+- Explain mode (`--explain`) to describe each action
+- Sensitive data filtering for captured command text
+- Workflow editing API (`WorkflowEditor`)
+
+## Installation
+
+```bash
+pip install -e .
+```
+
+## CLI Usage
+
+Start recording:
+
+```bash
+exectrace record my-workflow
+```
+
+Stop recording:
+
+```bash
+exectrace stop
+```
+
+Replay a workflow:
+
+```bash
+exectrace replay my-workflow --explain
+```
+
+Replay with dry-run and smart skipping:
+
+```bash
+exectrace replay my-workflow --dry-run --smart --explain
+```
+
+List workflows:
+
+```bash
+exectrace list
+```
+
+JSON list output:
+
+```bash
+exectrace list --json
+```
+
+## Storage Layout
+
+By default, ExecuTrace stores data in:
+
+```text
+~/.exectrace/
+  workflows/
+    <workflow>.json
+  state/
+    active_recording.json
+    replay_state_<workflow>.json
+```
+
+Override with environment variable:
+
+```bash
+export EXECTRACE_HOME=/path/to/custom/state
+```
+
+## Example
+
+See `examples/basic_usage.py`.

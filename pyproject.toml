@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "exectrace"
+version = "0.1.0"
+description = "Record and replay developer workflows including terminal commands and file system changes"
+readme = "README.md"
+requires-python = ">=3.9"
+authors = [
+  { name = "ExecuTrace Contributors" }
+]
+license = { text = "MIT" }
+
+[project.scripts]
+exectrace = "exectrace.cli:main"
+
+[tool.setuptools]
+packages = ["exectrace", "exectrace.core", "exectrace.recorder", "exectrace.storage", "exectrace.utils"]
