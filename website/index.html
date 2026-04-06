@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="ExecuTrace Documentation and Hall of Fame" />
+  <title>ExecuTrace // Open Source Docs</title>
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <div class="grain"></div>
+  <header class="hero">
+    <p class="mono">EST. 2026 // OPEN SOURCE DEV WORKFLOW TOOLKIT</p>
+    <h1>EXECUTRACE</h1>
+    <p class="subtitle">Record terminal workflows. Replay with confidence.</p>
+    <div class="hero-actions">
+      <a href="https://pypi.org/project/exectrace-workflow/" target="_blank" rel="noopener">PyPI Package</a>
+      <a href="https://github.com/Stalin-143/ExecuTrace" target="_blank" rel="noopener">GitHub Repo</a>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <h2>What Is ExecuTrace?</h2>
+      <p>
+        ExecuTrace is a Python CLI and library for recording command history and file system changes,
+        then replaying those workflows in reliable, repeatable modes.
+      </p>
+    </section>
+
+    <section>
+      <h2>Install</h2>
+      <pre><code>pip install exectrace-workflow
+exectrace --help</code></pre>
+    </section>
+
+    <section>
+      <h2>Core Commands</h2>
+      <div class="grid">
+        <article>
+          <h3>Record</h3>
+          <pre><code>exectrace record my-workflow
+# run commands
+exectrace stop</code></pre>
+        </article>
+        <article>
+          <h3>Replay</h3>
+          <pre><code>exectrace replay my-workflow --explain
+exectrace replay my-workflow --dry-run
+exectrace replay my-workflow --smart</code></pre>
+        </article>
+        <article>
+          <h3>Manage</h3>
+          <pre><code>exectrace list
+exectrace edit my-workflow
+exectrace delete my-workflow</code></pre>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>Architecture Snapshot</h2>
+      <ul>
+        <li>Recorder: captures command and file actions</li>
+        <li>Storage: JSON/XML backends via factory pattern</li>
+        <li>Replayer: dry-run, explain, smart execution</li>
+        <li>Editor: workflow mutation and maintenance</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Automatic Open Source Credits</h2>
+      <p>
+        Contributors are updated automatically by GitHub workflow and displayed below.
+      </p>
+      <div id="contributors" class="table"></div>
+    </section>
+
+    <section>
+      <h2>Security Hall of Fame</h2>
+      <p>
+        Researchers who responsibly disclose vulnerabilities are listed here after verification.
+      </p>
+      <div id="security-hof" class="table"></div>
+    </section>
+
+    <section>
+      <h2>Security and Advisory Process</h2>
+      <ul>
+        <li>Read security policy: <a href="../SECURITY.md">SECURITY.md</a></li>
+        <li>Disclosure process: <a href="../SECURITY_ADVISORY.md">SECURITY_ADVISORY.md</a></li>
+        <li>Use GitHub Security Advisories for private reports before public disclosure.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>ExecuTrace // Open Source // MIT // PyPI 1.0.2</p>
+  </footer>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>

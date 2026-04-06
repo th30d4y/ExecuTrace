@@ -39,6 +39,14 @@ ExecuTrace is a Python library and CLI tool that captures developer workflows an
 - Document complex workflows reliably
 - Ensure consistent deployments
 
+## Documentation Website
+
+The full open source docs website (retro 70s style) lives in `website/` and can be deployed with GitHub Pages.
+
+- Source: `website/index.html`
+- Hall of Fame data: `website/data/contributors.json`
+- Security Hall of Fame data: `website/data/security_hof.json`
+
 ---
 
 ## Installation
@@ -78,4 +86,9 @@ exectrace replay my-workflow --explain
 ## License
 
 MIT License - See [LICENSE](LICENSE) for details.
+
+## Security
+
+- Policy: [SECURITY.md](SECURITY.md)
+- Advisory process: [SECURITY_ADVISORY.md](SECURITY_ADVISORY.md)
 

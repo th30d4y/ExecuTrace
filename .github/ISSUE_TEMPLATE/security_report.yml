@@ -1,0 +1,36 @@
+name: Security Report (Public Placeholder)
+description: Use this only if private advisory reporting is unavailable.
+title: "[Security]: "
+labels: ["security"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        For sensitive vulnerabilities, please use GitHub Security Advisories for private disclosure.
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: Short description of the issue.
+      placeholder: Describe the vulnerability.
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Reproduction Steps
+      description: Exact steps to reproduce.
+      placeholder: 1. Do this... 2. Do that...
+    validations:
+      required: true
+
+  - type: textarea
+    id: impact
+    attributes:
+      label: Impact
+      description: What can an attacker do?
+      placeholder: Impact details.
+    validations:
+      required: true

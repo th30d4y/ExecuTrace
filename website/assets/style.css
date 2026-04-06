@@ -1,0 +1,118 @@
+:root {
+  --bg: #15100d;
+  --panel: #1f1712;
+  --text: #ffd79a;
+  --accent: #ff8f3f;
+  --line: #6e4b2a;
+  --glow: #ffb36b;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Courier New", Courier, monospace;
+  background: radial-gradient(circle at top, #2a1b12 0%, var(--bg) 45%, #0d0b0a 100%);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+.grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.08;
+  background-image: repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.08) 0, rgba(255, 255, 255, 0.08) 1px, transparent 1px, transparent 2px);
+}
+
+.hero {
+  text-align: center;
+  padding: 3rem 1rem 2rem;
+  border-bottom: 2px solid var(--line);
+  box-shadow: 0 0 30px rgba(255, 143, 63, 0.2);
+}
+
+.hero h1 {
+  margin: 0.5rem 0;
+  font-size: clamp(2rem, 8vw, 5rem);
+  letter-spacing: 0.2rem;
+  text-shadow: 0 0 12px var(--glow);
+}
+
+.subtitle,
+.mono {
+  margin: 0.5rem 0;
+}
+
+.hero-actions {
+  margin-top: 1rem;
+}
+
+.hero-actions a {
+  color: var(--accent);
+  margin: 0 0.6rem;
+  border: 1px solid var(--line);
+  padding: 0.4rem 0.7rem;
+  text-decoration: none;
+  display: inline-block;
+}
+
+main {
+  width: min(1000px, 92%);
+  margin: 1.5rem auto 3rem;
+}
+
+section {
+  margin: 1.2rem 0;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  padding: 1rem;
+}
+
+h2 {
+  margin-top: 0;
+  color: var(--accent);
+}
+
+pre {
+  background: #120e0b;
+  border: 1px solid var(--line);
+  padding: 0.8rem;
+  overflow-x: auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.table {
+  border: 1px solid var(--line);
+  background: #120e0b;
+  padding: 0.8rem;
+}
+
+.table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  text-align: left;
+  padding: 0.45rem;
+  border-bottom: 1px dashed var(--line);
+}
+
+a {
+  color: #ffc66d;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  border-top: 1px solid var(--line);
+}

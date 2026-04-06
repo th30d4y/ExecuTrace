@@ -1,0 +1,60 @@
+name: Update Hall of Fame
+
+on:
+  push:
+    branches: ["main"]
+    paths-ignore:
+      - "website/data/contributors.json"
+  schedule:
+    - cron: "0 2 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-contributors:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Build contributor data from GitHub API
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const perPage = 100;
+            const contributors = await github.paginate(
+              github.rest.repos.listContributors,
+              { owner, repo, per_page: perPage }
+            );
+
+            const mapped = contributors
+              .filter(c => c.type === 'User')
+              .map(c => ({
+                login: c.login,
+                profile: c.html_url,
+                contributions: c.contributions
+              }))
+              .sort((a, b) => b.contributions - a.contributions);
+
+            const fs = require('fs');
+            fs.writeFileSync(
+              'website/data/contributors.json',
+              JSON.stringify(mapped, null, 2) + '\n'
+            );
+
+      - name: Commit updates
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet; then
+            echo "No contributor changes"
+          else
+            git add website/data/contributors.json
+            git commit -m "chore: update hall of fame contributors"
+            git push
+          fi
