@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1001,
+    "name": "Aisha Patel",
+    "role": "Developer",
+    "department": "Engineering",
+    "clearance": "standard",
+    "badge": "ENG-1001",
+    "email": "a.patel@exectrace.internal",
+    "notes": "Frontend lead for the docs site. Active contributor since Q1 2026."
+  },
+  {
+    "id": 1002,
+    "name": "Marcus Chen",
+    "role": "QA Engineer",
+    "department": "Quality Assurance",
+    "clearance": "standard",
+    "badge": "QA-1002",
+    "email": "m.chen@exectrace.internal",
+    "notes": "Maintains the test_comprehensive.py suite. Joined March 2026."
+  },
+  {
+    "id": 1003,
+    "name": "SYSTEM_ADMIN",
+    "role": "Infrastructure Administrator",
+    "department": "Operations",
+    "clearance": "restricted",
+    "badge": "OPS-1003",
+    "email": "sysadmin@exectrace.internal",
+    "notes": "Ex0rcists{w4nn4d13_1d0r_1ns1ght}"
+  },
+  {
+    "id": 1004,
+    "name": "Priya Sharma",
+    "role": "DevOps Engineer",
+    "department": "Infrastructure",
+    "clearance": "standard",
+    "badge": "INF-1004",
+    "email": "p.sharma@exectrace.internal",
+    "notes": "Manages CI/CD pipelines and GitHub Actions workflows."
+  },
+  {
+    "id": 1005,
+    "name": "Jordan Blake",
+    "role": "Technical Writer",
+    "department": "Documentation",
+    "clearance": "standard",
+    "badge": "DOC-1005",
+    "email": "j.blake@exectrace.internal",
+    "notes": "Authored the README and CONTRIBUTING guides."
+  }
+]

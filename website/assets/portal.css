@@ -1,0 +1,195 @@
+.portal-header {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 4rem 1rem 2rem;
+  border-bottom: 2px solid var(--line);
+  box-shadow: 0 0 30px rgba(255, 143, 63, 0.2);
+}
+
+.portal-header h1 {
+  margin: 0.5rem 0;
+  font-size: clamp(1.8rem, 6vw, 3.5rem);
+  letter-spacing: 0.15rem;
+  text-shadow: 0 0 12px var(--glow);
+}
+
+.portal-header p {
+  margin: 0.5rem auto;
+  max-width: 600px;
+}
+
+.portal-header .back-link {
+  display: inline-block;
+  margin-top: 1rem;
+  color: var(--accent);
+  border: 1px solid var(--line);
+  padding: 0.4rem 0.7rem;
+  text-decoration: none;
+}
+
+.portal-header .back-link:hover {
+  border-color: var(--accent);
+}
+
+.employee-roster {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.8rem;
+  margin: 1.2rem 0;
+}
+
+.emp-card {
+  background: #120e0b;
+  border: 1px solid var(--line);
+  padding: 0.8rem;
+  cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.emp-card:hover,
+.emp-card.active {
+  border-color: var(--accent);
+  box-shadow: 0 0 8px rgba(255, 143, 63, 0.25);
+}
+
+.emp-card .emp-badge {
+  font-size: 0.7rem;
+  color: var(--line);
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+}
+
+.emp-card .emp-name {
+  color: var(--accent);
+  margin: 0.3rem 0 0.15rem;
+  font-size: 1rem;
+}
+
+.emp-card .emp-role {
+  font-size: 0.8rem;
+  color: var(--text);
+}
+
+.emp-card .emp-clearance {
+  font-size: 0.7rem;
+  margin-top: 0.4rem;
+  padding: 0.15rem 0.4rem;
+  display: inline-block;
+  border: 1px solid var(--line);
+}
+
+.emp-card .emp-clearance.restricted {
+  border-color: #c0392b;
+  color: #e74c3c;
+}
+
+.lookup-bar {
+  display: flex;
+  gap: 0.6rem;
+  margin: 1.2rem 0;
+  flex-wrap: wrap;
+}
+
+.lookup-bar label {
+  align-self: center;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.lookup-bar input {
+  background: #120e0b;
+  border: 1px solid var(--line);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 0.5rem 0.7rem;
+  width: 8rem;
+}
+
+.lookup-bar input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 6px rgba(255, 143, 63, 0.3);
+}
+
+.lookup-bar button {
+  background: transparent;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  font-family: inherit;
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.lookup-bar button:hover {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+.record-viewer {
+  background: #120e0b;
+  border: 1px solid var(--line);
+  padding: 1rem;
+  margin: 1.2rem 0;
+  min-height: 10rem;
+}
+
+.record-viewer .viewer-empty {
+  color: var(--line);
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.record-viewer .record-field {
+  display: flex;
+  border-bottom: 1px dashed var(--line);
+  padding: 0.4rem 0;
+}
+
+.record-viewer .record-field:last-child {
+  border-bottom: none;
+}
+
+.record-viewer .field-key {
+  width: 10rem;
+  min-width: 7rem;
+  color: var(--line);
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.05rem;
+  padding-top: 0.15rem;
+}
+
+.record-viewer .field-val {
+  color: var(--text);
+  flex: 1;
+  word-break: break-word;
+}
+
+.access-denied {
+  text-align: center;
+  padding: 2rem 0;
+  color: #e74c3c;
+}
+
+.access-denied .denied-icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.access-denied .denied-msg {
+  font-size: 0.9rem;
+}
+
+.scenario-note {
+  margin: 1.2rem 0;
+  padding: 0.7rem;
+  border: 1px dashed var(--line);
+  background: rgba(255, 143, 63, 0.05);
+  color: var(--line);
+  font-size: 0.85rem;
+  text-align: center;
+}
