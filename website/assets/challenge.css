@@ -1,0 +1,133 @@
+.trace-header {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 4rem 1rem 2rem;
+  border-bottom: 2px solid var(--line);
+  box-shadow: 0 0 30px rgba(255, 143, 63, 0.2);
+}
+
+.trace-header h1 {
+  margin: 0.5rem 0;
+  font-size: clamp(1.8rem, 6vw, 3.5rem);
+  letter-spacing: 0.15rem;
+  text-shadow: 0 0 12px var(--glow);
+}
+
+.trace-header p {
+  margin: 0.5rem 0;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.trace-header .back-link {
+  display: inline-block;
+  margin-top: 1rem;
+  color: var(--accent);
+  border: 1px solid var(--line);
+  padding: 0.4rem 0.7rem;
+  text-decoration: none;
+}
+
+.trace-header .back-link:hover {
+  border-color: var(--accent);
+}
+
+.trace-timeline {
+  position: relative;
+  padding-left: 2rem;
+  margin: 1.5rem 0;
+}
+
+.trace-timeline::before {
+  content: "";
+  position: absolute;
+  left: 0.6rem;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--line);
+}
+
+.trace-entry {
+  position: relative;
+  margin-bottom: 1.2rem;
+  padding: 0.7rem 0.9rem;
+  background: #120e0b;
+  border: 1px solid var(--line);
+}
+
+.trace-entry::before {
+  content: "";
+  position: absolute;
+  left: -1.65rem;
+  top: 1rem;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 6px var(--glow);
+}
+
+.trace-entry .trace-ts {
+  font-size: 0.75rem;
+  color: var(--line);
+  margin-bottom: 0.3rem;
+}
+
+.trace-entry .trace-msg {
+  color: var(--text);
+}
+
+.trace-entry .trace-pid {
+  font-size: 0.75rem;
+  color: var(--line);
+  margin-top: 0.3rem;
+}
+
+.trace-entry.entry-ok .trace-msg {
+  color: var(--accent);
+}
+
+.trace-entry.entry-info .trace-msg {
+  color: var(--text);
+}
+
+.trace-meta-notice {
+  margin: 1.5rem 0;
+  padding: 0.8rem;
+  border: 1px dashed var(--line);
+  background: rgba(255, 143, 63, 0.05);
+  color: var(--line);
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+.trace-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.8rem;
+  margin-top: 1.2rem;
+}
+
+.trace-stat {
+  background: #120e0b;
+  border: 1px solid var(--line);
+  padding: 0.7rem;
+  text-align: center;
+}
+
+.trace-stat .stat-value {
+  font-size: 1.4rem;
+  color: var(--accent);
+  text-shadow: 0 0 6px var(--glow);
+}
+
+.trace-stat .stat-label {
+  font-size: 0.7rem;
+  color: var(--line);
+  margin-top: 0.3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+}
