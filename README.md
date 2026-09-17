@@ -64,7 +64,7 @@ exectrace --help
 
 ### From Source (Development)
 ```bash
-git clone https://github.com/Stalin-143/ExecuTrace.git
+git clone https://github.com/th30d4y/ExecuTrace.git
 cd ExecuTrace
 pip install -e .
 ```

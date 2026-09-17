@@ -6,6 +6,12 @@ async function readJson(path) {
   return res.json();
 }
 
+function escapeHtml(str) {
+  var div = document.createElement("div");
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+}
+
 function renderTable(containerId, headers, rows) {
   const container = document.getElementById(containerId);
   if (!container) return;
@@ -15,10 +21,16 @@ function renderTable(containerId, headers, rows) {
     return;
   }
 
-  const head = headers.map((h) => `<th>${h}</th>`).join("");
+  const head = headers.map((h) => `<th>${escapeHtml(h)}</th>`).join("");
   const body = rows.map((row) => `<tr>${row.map((c) => `<td>${c}</td>`).join("")}</tr>`).join("");
 
   container.innerHTML = `<table><thead><tr>${head}</tr></thead><tbody>${body}</tbody></table>`;
+}
+
+function safeLink(url, text) {
+  var safeUrl = escapeHtml(url);
+  if (!/^https?:\/\//i.test(safeUrl)) return escapeHtml(text);
+  return `<a href="${safeUrl}" target="_blank" rel="noopener">${escapeHtml(text)}</a>`;
 }
 
 async function init() {
@@ -26,14 +38,14 @@ async function init() {
   const security = await readJson("data/security_hof.json");
 
   const contributorRows = contributors.map((c) => [
-    `<a href="${c.profile}" target="_blank" rel="noopener">${c.login}</a>`,
-    String(c.contributions),
+    safeLink(c.profile, c.login),
+    escapeHtml(String(c.contributions)),
   ]);
 
   const securityRows = security.map((s) => [
-    s.name,
-    s.issue,
-    s.reported,
+    escapeHtml(s.name),
+    escapeHtml(s.issue),
+    escapeHtml(s.reported),
   ]);
 
   renderTable("contributors", ["Contributor", "Commits"], contributorRows);
