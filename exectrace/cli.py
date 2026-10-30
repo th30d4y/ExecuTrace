@@ -48,7 +48,6 @@ def build_parser() -> argparse.ArgumentParser:
 
     # Stop command
     sub.add_parser("stop", help="Stop current recording and save workflow")
-
     # Replay command
     replay_parser = sub.add_parser("replay", help="Replay a workflow")
     replay_parser.add_argument("name", help="Workflow name")
@@ -63,7 +62,6 @@ def build_parser() -> argparse.ArgumentParser:
     # Edit command
     edit_parser = sub.add_parser("edit", help="Edit a saved workflow")
     edit_parser.add_argument("name", help="Workflow name to edit")
-
     # Delete command
     delete_parser = sub.add_parser("delete", help="Delete a saved workflow")
     delete_parser.add_argument("name", help="Workflow name to delete")
@@ -265,7 +263,11 @@ def cmd_delete(args: argparse.Namespace) -> int:
         if path.exists():
             found_formats.append("json")
             paths_to_delete.append(path)
+    except PermissionError:
+        # Do not swallow permission errors on the storage directory
+        raise
     except Exception:
+        # Other errors (e.g. transient I/O) are ignored so we can try the other format
         pass
     
     try:
@@ -274,6 +276,8 @@ def cmd_delete(args: argparse.Namespace) -> int:
         if path.exists():
             found_formats.append("xml")
             paths_to_delete.append(path)
+    except PermissionError:
+        raise
     except Exception:
         pass
     
