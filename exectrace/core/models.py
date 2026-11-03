@@ -21,6 +21,11 @@ class Action:
 
     @classmethod
     def from_dict(cls, data: Dict[str, Any]) -> "Action":
+        missing = [key for key in ("action_type", "timestamp") if key not in data]
+        if missing:
+            raise ValueError(
+                f"Corrupt workflow action: missing required field(s): {', '.join(missing)}"
+            )
         return cls(
             action_type=data["action_type"],
             timestamp=data["timestamp"],
@@ -51,6 +56,8 @@ class Workflow:
 
     @classmethod
     def from_dict(cls, data: Dict[str, Any]) -> "Workflow":
+        if "name" not in data:
+            raise ValueError("Corrupt workflow file: missing required field: name")
         return cls(
             name=data["name"],
             version=data.get("version", "1.0"),
