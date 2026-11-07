@@ -21,6 +21,11 @@ class Action:
 
     @classmethod
     def from_dict(cls, data: Dict[str, Any]) -> "Action":
+        if not isinstance(data, dict):
+            raise ValueError(f"Action data must be a dictionary, got {type(data).__name__}")
+        for field in ("action_type", "timestamp"):
+            if field not in data:
+                raise ValueError(f"Corrupt action data: missing required field '{field}'")
         return cls(
             action_type=data["action_type"],
             timestamp=data["timestamp"],
@@ -51,6 +56,10 @@ class Workflow:
 
     @classmethod
     def from_dict(cls, data: Dict[str, Any]) -> "Workflow":
+        if not isinstance(data, dict):
+            raise ValueError(f"Workflow data must be a dictionary, got {type(data).__name__}")
+        if "name" not in data:
+            raise ValueError("Corrupt workflow data: missing required field 'name'")
         return cls(
             name=data["name"],
             version=data.get("version", "1.0"),

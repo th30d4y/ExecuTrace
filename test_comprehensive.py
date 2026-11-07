@@ -206,6 +206,15 @@ def run_replay_state_tests() -> bool:
     suite = unittest.defaultTestLoader.loadTestsFromTestCase(ReplayStateTests)
     return unittest.TextTestRunner(verbosity=2).run(suite).wasSuccessful()
 
+def run_corrupt_workflow_tests() -> bool:
+    """Run corrupt workflow validation regressions."""
+    import unittest
+    from test_corrupt_workflow import CorruptWorkflowTests
+
+    suite = unittest.defaultTestLoader.loadTestsFromTestCase(CorruptWorkflowTests)
+    return unittest.TextTestRunner(verbosity=2).run(suite).wasSuccessful()
+
+
 
 def main_test():
     """Run all tests."""
@@ -220,6 +229,7 @@ def main_test():
         test_workflow_operations,
         test_replayer,
         run_replay_state_tests,
+        run_corrupt_workflow_tests,
     ]
     
     results = []
