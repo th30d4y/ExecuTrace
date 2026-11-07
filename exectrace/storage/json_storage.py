@@ -30,9 +30,15 @@ class JsonStorage:
         path = self.workflow_path(name)
         if not path.exists():
             raise FileNotFoundError(f"Workflow '{name}' was not found")
-        with open(path, "r", encoding="utf-8") as f:
-            data = json.load(f)
-        return Workflow.from_dict(data)
+        try:
+            with open(path, "r", encoding="utf-8") as f:
+                data = json.load(f)
+        except json.JSONDecodeError as exc:
+            raise ValueError(f"Corrupt workflow file '{path}': invalid JSON ({exc})") from exc
+        try:
+            return Workflow.from_dict(data)
+        except ValueError as exc:
+            raise ValueError(f"Corrupt workflow file '{path}': {exc}") from exc
 
     def list_workflows(self) -> List[str]:
         return sorted(file.stem for file in self.workflows_dir.glob("*.json"))

@@ -63,11 +63,21 @@ class XmlStorage:
         if not path.exists():
             raise FileNotFoundError(f"Workflow '{name}' was not found")
         
-        tree = ET.parse(path)
+        try:
+            tree = ET.parse(path)
+        except ET.ParseError as exc:
+            raise ValueError(f"Corrupt workflow file '{path}': invalid XML ({exc})") from exc
+        
         root = tree.getroot()
+        if root.tag != "workflow":
+            raise ValueError(f"Corrupt workflow file '{path}': root element must be <workflow>, got <{root.tag}>")
+        
+        name_val = root.get("name")
+        if not name_val:
+            raise ValueError(f"Corrupt workflow file '{path}': missing required attribute 'name'")
         
         workflow = Workflow(
-            name=root.get("name", name),
+            name=name_val,
             version=root.get("version", "1.0"),
             created_at=root.get("created_at"),
             updated_at=root.get("updated_at"),
@@ -77,8 +87,11 @@ class XmlStorage:
         actions_elem = root.find("actions")
         if actions_elem is not None:
             for action_elem in actions_elem.findall("action"):
-                action_type = action_elem.get("type", "")
-                timestamp = action_elem.get("timestamp", "")
+                action_type = action_elem.get("type")
+                timestamp = action_elem.get("timestamp")
+                if not action_type or not timestamp:
+                    missing = "type" if not action_type else "timestamp"
+                    raise ValueError(f"Corrupt workflow file '{path}': action missing required attribute '{missing}'")
                 
                 # Load payload
                 payload: Dict[str, object] = {}

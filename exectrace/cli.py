@@ -326,7 +326,7 @@ def main(argv: list[str] | None = None) -> int:
 
         parser.print_help()
         return 1
-    except FileNotFoundError as exc:
+    except (FileNotFoundError, ValueError) as exc:
         print(f"Error: {exc}", file=sys.stderr)
         return 2
     except RuntimeError as exc:
